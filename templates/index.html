@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MediTalk Chat</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="header">
+        🩺 MediTalk — AI Medical Assistant
+    </div>
+
+ <!-- NAVIGATION PANEL -->
+<div class="nav-wrapper">
+
+    <!-- Mobile Dropdown Button -->
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+
+    <!-- Buttons Container -->
+    <div class="nav-panel" id="navMenu">
+        <button onclick="quickAsk('Give me general health tips')" class="nav-btn">💡 Health Tips</button>
+        <button onclick="quickAsk('List common diseases and their symptoms')" class="nav-btn">🩺 Common Diseases</button>
+        <button onclick="quickAsk('Emergency first aid guidance')" class="nav-btn red">🚨 Emergency</button>
+        <button onclick="clearChat()" class="nav-btn clear">🧹 Clear Chat</button>
+        <button onclick="quickAsk('What is MediTalk and what can you do?')" class="nav-btn blue">ℹ️ About</button>
+    </div>
+</div>
+
+
+    <!-- CHAT -->
+    <div id="chat-box" class="chat-box"></div>
+
+    <div class="disclaimer">
+        ⚠️ Educational support only — Not a replacement for doctors.
+    </div>
+
+    <!-- INPUT -->
+    <div class="input-area">
+        <textarea id="user-input" placeholder="Type your medical question..."></textarea>
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+</div>
+
+<script>
+loadChat();
+
+function loadChat(){
+    fetch("/get_chat").then(res=>res.json()).then(data=>{
+        const box=document.getElementById("chat-box");
+        box.innerHTML="";
+        data.forEach(m=>addMessage(m.sender,m.text));
+    });
+}
+function addMessage(sender,text){
+    const box=document.getElementById("chat-box");
+    const div=document.createElement("div");
+    div.className=`chat ${sender}`;
+    div.innerHTML = `<div class="bubble ${sender}-bubble">${text}</div>`;
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+}
+
+
+function sendMessage(){
+    const input=document.getElementById("user-input");
+    const msg=input.value.trim();
+    if(!msg) return;
+
+    addMessage("user",msg);
+    input.value="";
+
+    addMessage("bot","Typing... ⌛");
+
+    fetch("/ask",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({msg})
+    }).then(res=>res.json()).then(()=>loadChat());
+}
+
+function clearChat(){
+    fetch("/clear_chat").then(()=>loadChat());
+}
+
+function quickAsk(text){
+    document.getElementById("user-input").value=text;
+    sendMessage();
+}
+function toggleMenu(){
+    const menu = document.getElementById("navMenu");
+    menu.classList.toggle("show-menu");
+}
+
+</script>
+
+</body>
+</html>

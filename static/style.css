@@ -1,0 +1,212 @@
+/* ---- GLOBAL ---- */
+*{box-sizing:border-box;}
+
+body{
+    margin:0;
+    padding:0;
+    background:linear-gradient(135deg,#03132d,#02254c,#033e7a);
+    font-family:"Poppins",Arial;
+    color:white;
+    height:100vh;
+    width:100vw;
+    overflow:hidden;
+}
+
+/* ---- FULL SCREEN APP ---- */
+.app{
+    height:100vh;
+    width:100vw;
+    display:flex;
+    flex-direction:column;
+    background:rgba(0,0,0,0.35);
+}
+
+/* ---- HEADER ---- */
+.header{
+    padding:14px;
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+    background:linear-gradient(45deg,#00c3ff,#00ffd5);
+    color:black;
+}
+
+/* ---- NAVBAR (COMPACT ON BIG SCREENS) ---- */
+/* NAV WRAPPER */
+.nav-wrapper{
+    width:100%;
+}
+
+/* Desktop Nav */
+.menu-toggle{
+    display:none;
+}
+
+/* Existing navbar styling */
+.nav-panel{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    padding:6px 10px;
+    height:42px;
+    overflow:hidden;
+    flex-wrap:nowrap;
+}
+
+.nav-btn{
+    padding:6px 14px;
+    border-radius:16px;
+    border:none;
+    cursor:pointer;
+    font-size:13px;
+    background:#00ffd5;
+    color:black;
+    white-space:nowrap;
+    transition:0.2s;
+}
+
+.nav-btn:hover{ transform:scale(1.05); }
+
+.red{background:#ff4d6d;color:white;}
+.blue{background:#64a3ff;}
+.clear{background:#ffaa00;color:black;}
+
+
+/* ---------- MOBILE DROPDOWN MODE ---------- */
+@media(max-width:750px){
+
+    .menu-toggle{
+        display:block;
+        width:100%;
+        padding:10px;
+        font-size:17px;
+        border:none;
+        background:#00ffd5;
+        color:black;
+        cursor:pointer;
+    }
+
+    .nav-panel{
+        display:none;
+        flex-direction:column;
+        height:auto;
+        padding:10px;
+        gap:10px;
+    }
+
+    .nav-panel.show-menu{
+        display:flex;
+    }
+
+    .nav-btn{
+        width:100%;
+        font-size:14px;
+    }
+}
+
+.nav-btn:hover{
+    transform:scale(1.05);
+}
+
+.red{background:#ff4d6d;color:white;}
+.blue{background:#64a3ff;}
+.clear{background:#ffaa00;color:black;}
+
+/* ---- CHAT: NOW HUGE ON BIG SCREENS ---- */
+.chat-box{
+    flex:1;
+    overflow-y:auto;
+    padding:14px 24px;
+    display:flex;
+    flex-direction:column;
+}
+
+/* Bubbles */
+.chat{
+    display:flex;
+    margin-bottom:12px;
+}
+
+.bubble{
+    max-width:75%;
+    padding:11px 13px;
+    border-radius:14px;
+    font-size:15px;
+    white-space:pre-wrap; /* bullet + newline support */
+    line-height:1.5;
+}
+
+/* USER RIGHT */
+.user{justify-content:flex-end;}
+.user-bubble{
+    background:#00c3ff;
+    color:black;
+}
+
+/* BOT LEFT */
+.bot{justify-content:flex-start;}
+.bot-bubble{
+    background:#062c55;
+    border:1px solid #00c3ff;
+}
+
+/* DISCLAIMER */
+.disclaimer{
+    text-align:center;
+    font-size:12px;
+    opacity:0.7;
+    padding:4px;
+}
+
+/* ---- INPUT BAR FIXED BOTTOM ---- */
+.input-area{
+    background:#0000005a;
+    padding:10px 12px;
+}
+
+textarea{
+    width:100%;
+    height:80px;
+    border-radius:12px;
+    padding:10px;
+    resize:none;
+    font-size:15px;
+    border:none;
+    outline:none;
+}
+
+button{
+    width:100%;
+    margin-top:6px;
+    padding:9px;
+    border-radius:10px;
+    font-size:17px;
+    background:linear-gradient(45deg,#00ffd5,#ffffff);
+    border:none;
+    cursor:pointer;
+}
+
+button:hover{
+    transform:scale(1.02);
+}
+
+/* ---- RESPONSIVE FOR MOBILE ---- */
+@media(max-width:750px){
+
+    /* navbar becomes vertical stack */
+    .nav-panel{
+        flex-wrap:wrap;
+        height:auto;
+        padding:8px;
+    }
+
+    .nav-btn{
+        width:46%;
+        text-align:center;
+        font-size:12px;
+        padding:8px;
+    }
+
+    .bubble{max-width:90%;}
+}
