@@ -1,14 +1,14 @@
 # 🩺 MediTalk – AI-Powered Medical Assistant
 
-MediTalk is a **multilingual AI medical assistant** that helps users understand
+MediTalk is a **Generative AI medical assistant** that helps users understand
 health conditions, symptoms, first aid, and medical concepts using **trusted medical
 encyclopedia data**.  
 It supports **text + voice input**, **spoken responses**, and **real-time chat UI**.
 
 
-## ✨ Features
+## ✨ Feature
 
-- 💬 Real-time chat interface (responsive for mobile & desktop)
+- 💬 Real-time chat interface 
 - 🎤 Voice input (Speech-to-Text)
 - 🔊 Text-to-Speech (bot speaks answers)
 - 📚 RAG-based answers using medical PDFs
@@ -21,7 +21,6 @@ It supports **text + voice input**, **spoken responses**, and **real-time chat U
 
 **Frontend**
 - HTML, CSS, JavaScript
-- Web Speech API (Voice Input & Output)
 
 **Backend**
 - Flask (Python)
@@ -31,7 +30,7 @@ It supports **text + voice input**, **spoken responses**, and **real-time chat U
 
 **AI / NLP**
 - HuggingFace sentence-transformers
-- Groq / OpenAI (optional LLM backend)
+- Groq 
 
 ## 🚀 How It Works
 
