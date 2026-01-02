@@ -6,15 +6,11 @@ python-dotenv
 langchain
 langchain-community
 langchain-pinecone
-langchain-experimental
 langchain-groq
-
 
 pinecone[grpc]
 pypdf
 
 sentence-transformers==2.2.2
+huggingface-hub==0.14.1
 torch==2.5.1+cpu
-
-
-
