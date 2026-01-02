@@ -14,4 +14,7 @@ pinecone[grpc]
 pypdf
 
 sentence-transformers==2.2.2
-torch==2.1.2+cpu
+torch==2.5.1+cpu
+
+
+
